@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NebenKostenCheck – Rechtssichere Nebenkostenabrechnung in 15 Minuten</title>
+    <meta name="description" content="Erstellen Sie Ihre Nebenkostenabrechnung in 15 Minuten – rechtssicher, fehlerfrei und fristgerecht. Für private Vermieter mit 1-10+ Einheiten.">
+    <style>
+        :root {
+            --green-900: #1a3a2a;
+            --green-800: #1e4d3a;
+            --green-700: #276749;
+            --green-600: #2f855a;
+            --green-500: #38a169;
+            --green-400: #48bb78;
+            --green-300: #68d391;
+            --green-200: #9ae6b4;
+            --green-100: #c6f6d5;
+            --green-50: #f0fff4;
+            --gray-900: #1a202c;
+            --gray-700: #4a5568;
+            --gray-600: #718096;
+            --gray-400: #a0aec0;
+            --gray-200: #e2e8f0;
+            --gray-100: #f7fafc;
+            --white: #ffffff;
+            --red-500: #e53e3e;
+            --red-100: #fff5f5;
+            --orange-500: #ed8936;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--gray-900);
+            line-height: 1.6;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--green-700);
+            text-decoration: none;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: var(--green-500);
+        }
+
+        .nav-cta {
+            background: var(--green-600);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-cta:hover {
+            background: var(--green-700);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--green-50) 0%, var(--white) 100%);
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--green-100);
+            color: var(--green-700);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            color: var(--green-900);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            color: var(--green-600);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray-700);
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--green-600);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(47, 133, 90, 0.3);
+        }
+
+        .hero-cta:hover {
+            background: var(--green-700);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(47, 133, 90, 0.4);
+        }
+
+        .hero-cta:active {
+            transform: translateY(0) scale(0.97);
+            box-shadow: 0 2px 8px rgba(47, 133, 90, 0.3);
+        }
+
+        .hero-trust {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .checkmark {
+            color: var(--green-500);
+            font-weight: bold;
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .section-label {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--green-600);
+            margin-bottom: 12px;
+        }
+
+        .problem h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--gray-900);
+        }
+
+        .problem .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+            max-width: 700px;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 24px;
+        }
+
+        .problem-card {
+            background: var(--red-100);
+            border: 1px solid #fed7d7;
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .problem-card .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .problem-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--gray-900);
+        }
+
+        .problem-card p {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .problem-stat {
+            text-align: center;
+            margin-top: 48px;
+            padding: 32px;
+            background: var(--gray-100);
+            border-radius: 12px;
+        }
+
+        .problem-stat .number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--red-500);
+        }
+
+        .problem-stat .label {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+            margin-top: 4px;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+            background: var(--green-50);
+        }
+
+        .how-it-works h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 48px;
+            text-align: center;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+            gap: 32px;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            padding: 32px 24px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--green-600);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .step .arrow {
+            display: none;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .features h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .features .subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            margin-bottom: 48px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            padding: 28px;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--green-300);
+            box-shadow: 0 4px 16px rgba(56, 161, 105, 0.1);
+        }
+
+        .feature-card .icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison */
+        .comparison {
+            padding: 80px 0;
+            background: var(--gray-100);
+        }
+
+        .comparison h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .comparison .subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            margin-bottom: 48px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .comparison-table th {
+            background: var(--green-700);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .comparison-table th.highlight-col {
+            background: var(--green-500);
+        }
+
+        .comparison-table td {
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .highlight-col {
+            background: var(--green-50);
+            font-weight: 600;
+            color: var(--green-800);
+        }
+
+        .comparison-table .price-row td {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        .pricing h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .pricing .subtitle {
+            text-align: center;
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            margin-bottom: 48px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: 24px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--green-500);
+            box-shadow: 0 8px 30px rgba(56, 161, 105, 0.15);
+            transform: scale(1.03);
+        }
+
+        .pricing-card.popular .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green-500);
+            color: var(--white);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .units {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--green-700);
+        }
+
+        .pricing-card .period {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card ul li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-card ul li::before {
+            content: "✓";
+            color: var(--green-500);
+            font-weight: 700;
+        }
+
+        .pricing-card .btn {
+            display: block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .pricing-card .btn-primary {
+            background: var(--green-600);
+            color: var(--white);
+        }
+
+        .pricing-card .btn-primary:hover {
+            background: var(--green-700);
+        }
+
+        .pricing-card .btn-outline {
+            border: 2px solid var(--green-600);
+            color: var(--green-600);
+        }
+
+        .pricing-card .btn-outline:hover {
+            background: var(--green-50);
+        }
+
+        /* Waitlist CTA */
+        .waitlist {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--green-700) 0%, var(--green-900) 100%);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .waitlist h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .waitlist p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            max-width: min(500px, 100%);
+            margin: 0 auto;
+        }
+
+        .waitlist-form input[type="email"] {
+            flex: 1;
+            min-width: min(250px, 100%);
+            max-width: 100%;
+            padding: 14px 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .waitlist-form input[type="email"]::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            border-color: var(--green-300);
+        }
+
+        .waitlist-form button {
+            padding: 14px 28px;
+            background: var(--white);
+            color: var(--green-700);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            max-width: 100%;
+        }
+
+        .waitlist-form button:hover {
+            background: var(--green-100);
+            transform: translateY(-1px);
+        }
+
+        .waitlist-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background: var(--gray-900);
+            color: var(--gray-400);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gray-400);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+
+        /* Safe area insets for notched devices */
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        nav {
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+
+        footer {
+            padding-bottom: calc(40px + env(safe-area-inset-bottom));
+        }
+
+        /* Minimum tap target sizes */
+        a, button, input[type="submit"], input[type="email"] {
+            min-height: 44px;
+        }
+
+        .nav-cta, .hero-cta, .pricing-card .btn, .waitlist-form button {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            min-height: 44px;
+            min-width: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 8px;
+        }
+
+        /* Large font size resilience */
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        .container {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        /* Retina display optimizations */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .comparison-table,
+            .feature-card,
+            .pricing-card,
+            .step {
+                border-width: 0.5px;
+            }
+        }
+
+        /* Pull-to-refresh indicator */
+        .ptr-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--green-500);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s ease;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .ptr-indicator.active {
+            transform: scaleX(1);
+            animation: ptr-pulse 0.8s ease infinite;
+        }
+
+        @keyframes ptr-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Responsive - Tablet */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-trust {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 10px;
+            }
+
+            .waitlist-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .waitlist-form input[type="email"] {
+                min-width: unset;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Responsive - Small mobile (320px) */
+        @media (max-width: 380px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 40px 0 32px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+
+            .hero-cta {
+                padding: 14px 24px;
+                font-size: 1rem;
+                width: 100%;
+            }
+
+            .problem h2,
+            .how-it-works h2,
+            .features h2,
+            .comparison h2,
+            .pricing h2,
+            .waitlist h2 {
+                font-size: 1.5rem;
+            }
+
+            .problem .subtitle,
+            .features .subtitle,
+            .comparison .subtitle,
+            .pricing .subtitle {
+                font-size: 0.95rem;
+            }
+
+            .problem-card,
+            .feature-card {
+                padding: 20px;
+            }
+
+            .pricing-card {
+                padding: 24px 20px;
+            }
+
+            .pricing-card .price {
+                font-size: 2rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px 8px;
+                font-size: 0.75rem;
+            }
+
+            .step {
+                padding: 24px 16px;
+            }
+
+            .nav-cta {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .problem-stat .number {
+                font-size: 2.5rem;
+            }
+
+            .footer-links {
+                gap: 8px 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .problem, .how-it-works, .features, .comparison, .pricing, .waitlist {
+                padding: 60px 0;
+            }
+        }
+
+        /* Landscape orientation */
+        @media (orientation: landscape) and (max-height: 500px) {
+            .hero {
+                padding: 32px 0 24px;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+
+            .hero p {
+                margin-bottom: 20px;
+            }
+
+            .hero-trust {
+                margin-top: 16px;
+                flex-direction: row;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            .problem, .how-it-works, .features, .comparison, .pricing, .waitlist {
+                padding: 40px 0;
+            }
+
+            .steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            nav {
+                padding: 10px 0;
+            }
+        }
+
+        /* Landscape on very small screens (phones rotated) */
+        @media (orientation: landscape) and (max-width: 700px) {
+            .features-grid,
+            .problem-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Ensure no horizontal overflow at any size */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+            overscroll-behavior-y: contain;
+        }
+
+        .comparison-table {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        /* Large font overflow prevention */
+        h1, h2, h3, p, span, td, th, li, a, button {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+
+        /* Active/tap states for tactile feedback */
+        .nav-cta:active,
+        .pricing-card .btn:active,
+        .waitlist-form button:active {
+            transform: scale(0.96);
+            opacity: 0.85;
+            transition: transform 0.05s, opacity 0.05s;
+        }
+
+        .footer-links a:active,
+        a[href^="#"]:active {
+            opacity: 0.7;
+        }
+
+        /* Touch-action hints for gesture disambiguation */
+        .hero-cta,
+        .nav-cta,
+        .pricing-card .btn,
+        .waitlist-form button,
+        .footer-links a {
+            touch-action: manipulation;
+        }
+
+        /* Scroll snap for swipe gesture sections */
+        @media (max-width: 768px) {
+            html {
+                scroll-snap-type: y proximity;
+            }
+
+            section {
+                scroll-snap-align: start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pull-to-refresh indicator -->
+    <div class="ptr-indicator" id="ptr-indicator"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-inner">
+            <a href="#" class="logo">Neben<span>Kosten</span>Check</a>
+            <a href="#waitlist" class="nav-cta">Auf Warteliste →</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">🚀 Jetzt Early Access sichern – Begrenzte Plätze</div>
+            <h1>Nebenkostenabrechnung in 15 Minuten.<br><span class="highlight">Rechtssicher.</span></h1>
+            <p>KI-gestützte Nebenkostenabrechnung für private Vermieter. Keine Vorkenntnisse nötig – einfach Daten eingeben und rechtssichere PDF erhalten.</p>
+            <a href="#waitlist" class="hero-cta">Kostenlos auf die Warteliste</a>
+            <div class="hero-trust">
+                <span><span class="checkmark">✓</span> Aktuellste Rechtsprechung</span>
+                <span><span class="checkmark">✓</span> DSGVO-konform</span>
+                <span><span class="checkmark">✓</span> Keine Installation nötig</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-label">Das Problem</div>
+            <h2>Nebenkostenabrechnungen: Teuer, fehleranfällig, zeitkritisch</h2>
+            <p class="subtitle">Als privater Vermieter stehen Sie jedes Jahr vor derselben Herausforderung – und die Risiken sind enorm.</p>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">⚠️</div>
+                    <h3>50% aller Abrechnungen fehlerhaft</h3>
+                    <p>Laut Mieterbund enthält jede zweite Nebenkostenabrechnung Fehler. Falsche Verteilerschlüssel, fehlende Positionen oder formale Mängel machen Ihre Abrechnung angreifbar.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">💸</div>
+                    <h3>Mieter fechten an – Sie zahlen drauf</h3>
+                    <p>Fehlerhafte Abrechnungen werden von Mietern angefochten. Im schlimmsten Fall müssen Sie Nachzahlungen zurückerstatten und tragen die Kosten selbst.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">⏰</div>
+                    <h3>12-Monats-Frist: Verpassen heißt verlieren</h3>
+                    <p>Gesetzliche Deadline: 12 Monate nach Ende der Abrechnungsperiode. Wer die Frist versäumt, verliert den Anspruch auf Nachzahlungen – unwiderruflich.</p>
+                </div>
+            </div>
+
+            <div class="problem-stat">
+                <div class="number">50%</div>
+                <div class="label">aller Nebenkostenabrechnungen in Deutschland sind fehlerhaft (Deutscher Mieterbund)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">So funktioniert's</div>
+            <h2>In 3 Schritten zur fertigen Abrechnung</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Kosten & Mieterdaten eingeben</h3>
+                    <p>Tragen Sie Ihre Betriebskosten und die Daten Ihrer Mieter ein. Unser System führt Sie Schritt für Schritt.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Verteilerschlüssel wählen</h3>
+                    <p>Wählen Sie den passenden Verteilerschlüssel – oder lassen Sie unsere KI den optimalen berechnen (nach Fläche, Personen, Verbrauch).</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Rechtssichere PDF erhalten</h3>
+                    <p>Erhalten Sie eine formal korrekte, rechtssichere Nebenkostenabrechnung als PDF – fertig zum Versand an Ihre Mieter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">Features</div>
+            <h2>Alles was Sie für eine korrekte Abrechnung brauchen</h2>
+            <p class="subtitle">Entwickelt für private Vermieter, die keine Hausverwaltung beauftragen möchten.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🧮</div>
+                    <h3>Automatische Verteilerschlüssel-Berechnung</h3>
+                    <p>Ob nach Wohnfläche, Personenzahl oder Verbrauch – unser System berechnet den korrekten Schlüssel und prüft auf Plausibilität.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔔</div>
+                    <h3>Deadline-Warner</h3>
+                    <p>Automatische Erinnerungen per E-Mail, damit Sie die 12-Monats-Frist niemals verpassen. Rechtzeitig und mehrfach.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📄</div>
+                    <h3>Beleggenerierung</h3>
+                    <p>Generieren Sie automatisch alle notwendigen Belege und Anlagen, die Mieter zur Prüfung anfordern können.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Rechtsprechungs-Check</h3>
+                    <p>Unsere KI prüft Ihre Abrechnung gegen aktuelle BGH-Urteile und Rechtsprechung – für maximale Rechtssicherheit.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">📊</div>
+                    <h3>Vorauszahlungs-Empfehlung</h3>
+                    <p>Basierend auf den tatsächlichen Kosten erhalten Sie eine Empfehlung zur Anpassung der monatlichen Vorauszahlungen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>DSGVO-konform & sicher</h3>
+                    <p>Alle Daten werden auf deutschen Servern gespeichert und verschlüsselt. Volle DSGVO-Konformität garantiert.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">Vergleich</div>
+            <h2>Warum NebenKostenCheck?</h2>
+            <p class="subtitle">Vergleichen Sie die Alternativen – und entscheiden Sie selbst.</p>
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Steuerberater</th>
+                            <th>Hausverwaltung</th>
+                            <th class="highlight-col">NebenKostenCheck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="price-row">
+                            <td><strong>Kosten</strong></td>
+                            <td>€200–500 pro Abrechnung</td>
+                            <td>€25–35/Einheit/Monat</td>
+                            <td class="highlight-col">Ab €49/Jahr</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zeitaufwand</strong></td>
+                            <td>Termine, Unterlagen sammeln, wochenlang warten</td>
+                            <td>Gering (aber Kontrolle abgeben)</td>
+                            <td class="highlight-col">15 Minuten</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rechtssicherheit</strong></td>
+                            <td>Hoch (aber teuer)</td>
+                            <td>Mittel (Qualität variiert stark)</td>
+                            <td class="highlight-col">Hoch (KI + aktuelle Rechtsprechung)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fristüberwachung</strong></td>
+                            <td>Ihre Verantwortung</td>
+                            <td>Meist inklusive</td>
+                            <td class="highlight-col">Automatische Erinnerungen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kontrolle</strong></td>
+                            <td>Gering (delegiert)</td>
+                            <td>Gering (delegiert)</td>
+                            <td class="highlight-col">Volle Kontrolle & Transparenz</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kosten bei 3 Einheiten/Jahr</strong></td>
+                            <td>€600–1.500</td>
+                            <td>€900–1.260</td>
+                            <td class="highlight-col">€99</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-label" style="text-align:center;">Preise</div>
+            <h2>Einfache, transparente Preise</h2>
+            <p class="subtitle">Keine versteckten Kosten. Keine Vertragsbindung. Jederzeit kündbar.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="units">1–2 Wohneinheiten</div>
+                    <div class="price">€49</div>
+                    <div class="period">pro Jahr</div>
+                    <ul>
+                        <li>Bis zu 2 Abrechnungen/Jahr</li>
+                        <li>Rechtssichere PDF-Erstellung</li>
+                        <li>Verteilerschlüssel-Berechnung</li>
+                        <li>Deadline-Erinnerungen</li>
+                        <li>E-Mail-Support</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-outline">Auf Warteliste</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Beliebteste Wahl</div>
+                    <h3>Standard</h3>
+                    <div class="units">3–10 Wohneinheiten</div>
+                    <div class="price">€99</div>
+                    <div class="period">pro Jahr</div>
+                    <ul>
+                        <li>Bis zu 10 Abrechnungen/Jahr</li>
+                        <li>Alle Starter-Features</li>
+                        <li>Beleggenerierung</li>
+                        <li>Vorauszahlungs-Empfehlung</li>
+                        <li>Prioritäts-Support</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-primary">Auf Warteliste</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Professional</h3>
+                    <div class="units">10+ Wohneinheiten</div>
+                    <div class="price">€199</div>
+                    <div class="period">pro Jahr</div>
+                    <ul>
+                        <li>Unbegrenzte Abrechnungen</li>
+                        <li>Alle Standard-Features</li>
+                        <li>Multi-Objekt-Verwaltung</li>
+                        <li>CSV-Import für Kostendaten</li>
+                        <li>Telefon-Support</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-outline">Auf Warteliste</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist CTA -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <h2>Sichern Sie sich Ihren Platz auf der Warteliste</h2>
+            <p>Seien Sie unter den Ersten, die NebenKostenCheck nutzen können. Early-Access-Nutzer erhalten 50% Rabatt im ersten Jahr.</p>
+            <form class="waitlist-form" onsubmit="handleWaitlist(event)">
+                <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+                <button type="submit">Jetzt eintragen →</button>
+            </form>
+            <p class="waitlist-note">Kein Spam. Keine Weitergabe. Jederzeit abmeldbar.</p>
+            <div id="waitlist-success" style="display:none; margin-top: 20px; background: rgba(255,255,255,0.15); padding: 16px; border-radius: 8px; font-weight: 600;">
+                ✓ Vielen Dank! Sie sind auf der Warteliste. Wir melden uns bei Ihnen.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutz</a>
+                <a href="#">AGB</a>
+                <a href="#">Kontakt</a>
+            </div>
+            <p>© 2026 NebenKostenCheck. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        function haptic(duration) {
+            if (navigator.vibrate) navigator.vibrate(duration || 10);
+        }
+
+        function handleWaitlist(e) {
+            e.preventDefault();
+            haptic(20);
+            const form = e.target;
+            const email = form.querySelector('input[type="email"]').value;
+            console.log('Waitlist signup:', email);
+            form.style.display = 'none';
+            document.getElementById('waitlist-success').style.display = 'block';
+        }
+
+        // Haptic on CTA clicks
+        document.querySelectorAll('.hero-cta, .nav-cta, .pricing-card .btn').forEach(function(el) {
+            el.addEventListener('click', function() { haptic(10); });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                haptic(10);
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Pull-to-refresh (mobile only, when at top of page)
+        (function() {
+            var startY = 0;
+            var pulling = false;
+            var indicator = document.getElementById('ptr-indicator');
+
+            document.addEventListener('touchstart', function(e) {
+                if (window.scrollY === 0) {
+                    startY = e.touches[0].clientY;
+                    pulling = true;
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                if (!pulling) return;
+                var distance = e.touches[0].clientY - startY;
+                if (distance > 0 && distance < 150) {
+                    indicator.style.transform = 'scaleX(' + (distance / 150) + ')';
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchend', function(e) {
+                if (!pulling) return;
+                var endY = e.changedTouches[0].clientY;
+                var distance = endY - startY;
+                if (distance > 120 && window.scrollY === 0) {
+                    indicator.classList.add('active');
+                    haptic(30);
+                    setTimeout(function() { location.reload(); }, 600);
+                } else {
+                    indicator.style.transform = 'scaleX(0)';
+                }
+                pulling = false;
+            }, { passive: true });
+        })();
+
+        // Swipe left/right between sections (natural vertical handled by scroll-snap CSS)
+        (function() {
+            var sections = Array.from(document.querySelectorAll('section'));
+            var touchStartX = 0;
+            var touchStartY = 0;
+
+            document.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            document.addEventListener('touchend', function(e) {
+                var dx = e.changedTouches[0].clientX - touchStartX;
+                var dy = e.changedTouches[0].clientY - touchStartY;
+                // Only trigger on predominantly horizontal swipes
+                if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 2) {
+                    haptic(10);
+                    var currentScroll = window.scrollY + window.innerHeight / 2;
+                    var currentIdx = 0;
+                    for (var i = 0; i < sections.length; i++) {
+                        if (sections[i].offsetTop <= currentScroll) currentIdx = i;
+                    }
+                    // Swipe left = next section, swipe right = previous
+                    var targetIdx = dx < 0
+                        ? Math.min(currentIdx + 1, sections.length - 1)
+                        : Math.max(currentIdx - 1, 0);
+                    sections[targetIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>
